@@ -18,8 +18,8 @@
                                                            <% if logged_in? %>
                                                                  <li class="dropdown">
                                                                         <a href="#" class="dropdown-toggle " data-toggle="dropdown" style="padding-right: 20px; padding-left: 20px;">
-                                                                        <%= gravatar_for @user, :size => 20 %>
-                                                                        <%= @user.name %> 
+                                                                        <%= gravatar_for current_user, :size => 20 %>
+                                                                        <%= current_user.name %> 
                                                                               <b class="caret"></b>
                                                                         </a>
                                                                         <ul class="dropdown-menu">
