@@ -359,7 +359,10 @@ h6,.page-content h6 a {font-weight: normal; font-style: normal; font-family: 'Op
 
 .navbar .nav-pills > .active > a, .navbar .nav-pills > .active > a:hover, .navbar .nav-pills li.dropdown.open > .dropdown-toggle, .navbar .nav-pills li.dropdown.active > .dropdown-toggle {color:rgb(255, 255, 255);background-color:#8eb037;}
 
-.navbar .ddmenu {margin-top:45px;margin-bottom:0px}
+.navbar .ddmenu {
+    margin-top:45px;margin-bottom:0px
+
+    }
 
 .navbar .nav-pills li.dropdown > .dropdown-toggle .caret, .navbar .nav-pills li.dropdown.open > .dropdown-toggle .caret, .navbar .nav-pills li.dropdown.active > .dropdown-toggle .caret, .navbar .nav-pills li.dropdown.open.active > .dropdown-toggle .caret {border-top-color:rgb(41, 41, 41);border-bottom-color:rgb(41, 41, 41);}
 
@@ -553,6 +556,19 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }
 
 /* footer */
