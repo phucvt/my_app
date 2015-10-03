@@ -6,7 +6,7 @@
                                  <div id="divLogo" class="pull-left">
                     		<!-- <a href="index.html" id="divSiteTitle">TimTroNhanh</a><br /> -->
                                        
-                                       <%= link_to "TimTroNhanh", '#', id: "divSiteTitle" %>
+                                       <%= link_to "TimTroNhanh", root_url , id: "divSiteTitle" %>
                                  </div>
                                  <div id="divMenuRight"  class="pull-right">
                                        <div class="navbar">
@@ -35,16 +35,23 @@
                                                                  <li class="dropdown ">
                                                                  	<%= link_to login_path do %>
                                                                  		<span class="glyphicon glyphicon-user"></span>
-                                                                 		Đăng nhập & Đăng ký
+                                                                 		Đăng nhập 
                                                                  	<% end %>
                                                                  </li>
                                                           <% end %>
-		                                              <li class="dropdown">
-		                                              	<%= link_to '#' do %>
-                                                           		<span class="glyphicon glyphicon-pencil"></span>
-                                                           		Đăng tin
-                                                           	<% end %>
-		                                              </li>                               
+		                                             <li class="dropdown">
+                                                              <% if logged_in? %>           
+                                                               <%= link_to new_post_path  do %>
+                                                                  <span class="glyphicon glyphicon-pencil"></span>
+                                                                  Đăng tin
+                                                                <% end %>
+                                                              <% else %>
+                                                                    <%= link_to  signup_path do %>
+                                                                          <span class="glyphicon glyphicon-pencil"></span>
+                                                                          Sign up
+                                                                    <% end %>
+                                                              <% end %>
+                                                  </li>                                   
                                                     </ul>
                                               </div>
                                        </div>
