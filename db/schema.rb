@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003054154) do
+ActiveRecord::Schema.define(version: 20151004043817) do
 
   create_table "posts", force: :cascade do |t|
     t.text     "desc",       limit: 65535
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20151003054154) do
     t.float    "price",      limit: 24
     t.float    "area",       limit: 24
     t.string   "address",    limit: 255
+    t.string   "picture",    limit: 255
   end
 
   add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at", using: :btree

@@ -1,46 +1,93 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="row">
+      <div class="col-md-3">
+            <section class="user_info">
+                 <%= render 'shared/user_info' %>
+            </section>
+      </div>
+      <div class="col-md-7">
+            <%= form_for(@post) do |f| %>
+                <% if @post.errors.any? %>
+                      <div id="error_explanation">
+                            <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+                            <ul>
+                                 <% @post.errors.full_messages.each do |message| %>
+                                      <li><%= message %></li>
+                                 <% end %>
+                            </ul>
+                       </div>
+                 <% end %>
 
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :type_post %><br>
-    <%= f.text_field :type_post %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :area %><br>
-    <%= f.text_field :area %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :desc %><br>
-    <%= f.text_area :desc %>
-  </div>
+                <div class="field">
+                      <div class="form-group">
+                            <%= f.label :location, class: "col-sm-3 control-label" %>
+                            <div class="col-sm-9">
+                                  <%= f.text_field :location, class: "form-control" , placeholder: "Compose location" %>
+                            </div>
+                      </div>
+                 </div>
+                 <div class="field">
+                      <div class="form-group">
+                            <%= f.label :type_post, class: "col-sm-3 control-label" %>
+                            <div class="col-sm-9">
+                                  <%= f.text_field :type_post, class: "form-control", placeholder: "Compose type of post"  %>
+                            </div>
+                       </div>
+                 </div>
+                 <div class="field">
+                      <div class="form-group">
+                            <%= f.label :title, class: "col-sm-3 control-label" %>
+                            <div class="col-sm-9">
+                                  <%= f.text_field :title, class: "form-control", placeholder: "Compose title"  %>
+                            </div>
+                       </div>
+                 </div>
+                 <div class="field">
+                      <div class="form-group">
+                            <%= f.label :area, class: "col-sm-3 control-label" %>
+                            <div class="col-sm-9">
+                                  <%= f.text_field :area, class: "form-control", placeholder: "Compose area"  %>
+                            </div>
+                       </div>
+                 </div>
+                 <div class="field">
+                      <div class="form-group">
+                            <%= f.label :price, class: "col-sm-3 control-label" %>
+                            <div class="col-sm-9">
+                                  <%= f.text_field :price, class: "form-control", placeholder: "Compose price"  %>
+                            </div>
+                       </div>
+                 </div>
+                 <div class="field">
+                      <div class="form-group">
+                           <%= f.label :address, class: "col-sm-3 control-label" %>
+                            <div class="col-sm-9">
+                                  <%= f.text_field :address, class: "form-control", placeholder: "Compose address"  %>
+                            </div>
+                      </div>
+                 </div>
+                 <div class="field">
+                      <div class="form-group">
+                            <%= f.label :desc, class: "col-sm-3 control-label" %>
+                            <div class="col-sm-9">
+                                  <%= f.text_field :desc, class: "form-control", placeholder: "Compose desc"  %>
+                             </div>
+                      </div>
+                 </div>
+                <span class="picture">
+                      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+                </span>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+                 <p style="text-align: center;"><button type="submit" class="btn btn-primary">Create Post</button></p>
+
+            <% end %>
+            <script type="text/javascript">
+                $('#post_picture').bind('change', function() {
+                var size_in_megabytes = this.files[0].size/1024/1024;
+                if (size_in_megabytes > 5) {
+                  alert('Maximum file size is 5MB. Please choose a smaller file.');
+                }
+                });
+            </script>
+      </div>
+</div>

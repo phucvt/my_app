@@ -5,8 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Desc</th>
-      <th>User</th>
+      <th>Type post</th>
+      <th>Title</th>
+      <th>Time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,9 +15,11 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.desc %></td>
-      
-        <td><%= link_to 'Show', post %></td>
+        <td><%= post.type_post %></td>
+        <td><%= link_to post.title, post %></td>
+        <td >
+              Posted <%= time_ago_in_words(post.created_at) %> ago.
+        </td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

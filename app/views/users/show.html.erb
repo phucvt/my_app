@@ -5,6 +5,9 @@
 		      	<h1>
 		        		<%= gravatar_for @user %>
 		        		<%= @user.name %>
+		        		<% if @user.posts.any? %>
+		        			<h3>posts (<%= @user.posts.count %>)</h3>
+		        		<% end %>
 		      	</h1>
 	    	</section>
   	</aside>

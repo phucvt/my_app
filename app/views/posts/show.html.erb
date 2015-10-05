@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Desc:</strong>
-  <%= @post.desc %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  
-</p>
+
+<div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title"><%= @post.title %></h3>
+        </div>
+        <div class="panel-body">
+        <%= image_tag @post.picture.url if @post.picture? %>
+        <span class="timestamp">
+        <span class="desc"><%= @post.desc %></span>
+Posted <%= time_ago_in_words(@post.created_at) %> ago.
+</span>
+</div>
+    </div>
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
