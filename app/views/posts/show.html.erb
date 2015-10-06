@@ -13,7 +13,13 @@
         </br>
         <span><%= @post.type_post %></span>
         </br>
+        <span><%= @post.area %></span>
+        </br>
         <span><%= @post.desc %></span>
+        </br>
+        <span><%= @post.price %></span>
+        </br>
+        <span><%= @post.address %></span>
         </br>
         <span class="timestamp">        
           Posted <%= time_ago_in_words(@post.created_at) %> ago.
