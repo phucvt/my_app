@@ -4,9 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-
-    @posts = Post.all
-    
+    @posts = Post.all   
   end
 
   # GET /posts/1
@@ -25,10 +23,8 @@ class PostsController < ApplicationController
 
   # POST /posts
   # POST /posts.json
-  def create
-    
-@post = current_user.posts.build(post_params)
-
+  def create  
+    @post = current_user.posts.build(post_params)
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -65,14 +61,15 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      # params[:user_id] = current_user.id
-      params.require(:post).permit( :location, :type_post, :title, :area, :price, :address, :desc, :picture, :user_id )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    # params[:user_id] = current_user.id
+    params.require(:post).permit( :location, :type_post, :title, :area, :price, :address, :desc, :picture, :user_id )
+  end
 end
+

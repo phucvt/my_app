@@ -11,12 +11,14 @@ class Post < ActiveRecord::Base
   validates :address, presence: true, length: { minimum: 5 }
   validates :desc, presence: true, length: { maximum: 1000 }
   validate :picture_size
+
   private
 
-    # Validates the size of an uploaded picture.
-    def picture_size
-      if picture.size > 5.megabytes
-          errors.add(:picture, "should be less than 5MB")
-      end
+  # Validates the size of an uploaded picture.
+  def picture_size
+    if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
     end
+  end
+  
 end

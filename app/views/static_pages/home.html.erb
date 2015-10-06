@@ -3,29 +3,49 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="col-md-2">
-    
+  <div class="col-md-2" style="border: 1px solid red; margin-right: 10px; ">
+
+      <ul class="nav nav-tabs">
+        <li  class="active"><a data-toggle="tab" href="#">Cho thue</a>
+        </li>
+        <li><a data-toggle="tab" href="#">Can thue</a>       
+        </li>
+      </ul>
+      <div class="tab-content">
+            <div class="tab-pane fade in active">
+                <ul>
+                      <%= link_to '#' do %>
+                            <span class="glyphicon glyphicon-folder-close" ></span>
+                            Phong tro 
+                      <% end %>      
+                      </br>
+                      <%= link_to '#' do %>
+                            <span class="glyphicon glyphicon-home" ></span>
+                            Nha o 
+                      <% end %>                                                      
+                </ul>
+            </div>
+      </div>
+
   </div>
-  <div class="col-md-8">
+  <div class="col-md-7" style="border: 1px solid red">
     <table class="table table-striped">
       <caption><h1>Listing Posts</h1></caption>
         <tbody>
           <% @posts.each do |post| %>
             <tr>
                <td><%= link_to gravatar_for(post.user, size: 50), post.user %></td>
-              <td><%= post.type_post %></td>
-              <td><%= link_to post.title, post %></td>
+              <td><%= post.type_post %></br>
+              <%= link_to post.title, post %></td>
               <td >
                     Posted <%= time_ago_in_words(post.created_at) %> ago.
               </td>
-              <td><%= link_to 'Edit', edit_post_path(post) %></td>
-              <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
     
   </div>
 </div>
