@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
+  belongs_to :catelory
   has_many :likes
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader

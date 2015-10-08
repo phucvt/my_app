@@ -638,3 +638,29 @@ footer {
 }
 
 
+.gmnoprint{margin-left: 16%;}
+ #map-canvas {
+   height: 370px;
+  
+   margin: 0px;
+   padding: 0px
+ }
+ #panel {
+   position: absolute;
+   top: 5px;
+   left: 50%;
+   margin-left: -180px;
+   z-index: 5;
+   background-color: #fff;
+   padding: 5px;
+   border: 1px solid #999;
+ }
+ thead{font-weight: bold;}
+ #err{background: red}
+ #searchbox {
+    padding: 2px 5px;
+    width: 250px;
+    background:  #66CC66;
+    margin-left: 79%;
+
+}

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :catelories
   resources :posts do 
     member do
       post 'like'

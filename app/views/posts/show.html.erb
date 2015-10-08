@@ -1,3 +1,4 @@
+<% provide(:title, "Post") %>
 <p id="notice"><%= notice %></p>
 <p>
 <div class="row">
@@ -53,4 +54,13 @@
    </div>
    <div class="col-md-2">
    </div>
+</div>
+
+<div id="panel">
+      <input id="address" type="textbox" value="<%=@post.address%>">
+      <input type="button" value="Geocode" onclick="codeAddress()">
+    </div>
+    <div id="map-canvas">
+    <script type="text/javascript"> initialize(); </script>
+    </div>
 </div>

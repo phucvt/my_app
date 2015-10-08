@@ -26,9 +26,9 @@
       </div>
       <div class="field">
          <div class="form-group">
-            <%= f.label :type_post, class: "col-sm-3 control-label" %>
-            <div class="col-sm-9">
-               <%= f.text_field :type_post, class: "form-control", placeholder: "input type of post"  %>
+            <%= f.label :category_id,'Loại:', class: 'col-sm-2 control-label' %><br>
+            <div class="col-sm-6">
+               <%=f.collection_select :category_id, Post.list_categories, :id, :name, class: 'form-control'%>
             </div>
          </div>
       </div>
