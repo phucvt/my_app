@@ -1,10 +1,10 @@
-  <% provide(:title, "Home") %>
-  <p id="notice"><%= notice %></p>
-  <div class="row">
-    <div class="col-md-3" >
-      <div class="row">
-        <div class="col-md-9">
-          <div class="panel panel-danger">
+<% provide(:title, "Home") %>
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-3" >
+    <div class="row">
+      <div class="col-md-9">
+        <div class="panel panel-danger">
           <div class="panel-heading">
             <ul class="nav nav-tabs">
               <li  class="active"><a data-toggle="tab" href="#">Cho thue</a>
@@ -29,16 +29,13 @@
             </div>
           </div>
         </div>
-
-        </div>
       </div>
-        
     </div>
-    <div class="col-md-6" style="margin-left: -45px;margin-right: -70px; ">
+  </div>
+  <div class="col-md-6" style="margin-left: -45px;margin-right: -70px; ">
     <div class="panel panel-danger">
-      
       <div class="panel-heading" style="text-align: center; font-size: 20px; ">
-          Listing Posts
+        Listing Posts
       </div>
       <table class="table table-striped">
         <tbody>
@@ -51,17 +48,20 @@
             <td >
               Posted <%= time_ago_in_words(post.created_at) %> ago.
             </td>
+            <td>     
+              <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= post.thumbs_up_total %>
+              <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp <%= post.thumbs_down_total %>
+            </td>
           </tr>
           <% end %>
         </tbody>
       </table>
       <div style="width: 300px; margin: 0 auto;">
-        
-      <%= will_paginate @posts%> 
+        <%= will_paginate @posts%> 
       </div>
     </div>
-    </div>
-    <div class="col-md-3">
-    </div>
   </div>
-  <br>
+  <div class="col-md-3">
+  </div>
+</div>
+<br>

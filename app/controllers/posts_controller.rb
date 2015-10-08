@@ -4,12 +4,24 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all   
+    @posts = Post.all.sort_by{|likes| likes.thumbs_up_total}
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find(params[:id])
+    @users = @post.likes.all
+    like_checking = Like.find_by(user: current_user, post: @post)
+    if like_checking
+      if like_checking.like == true 
+        @like_post = 1
+      else
+        @like_post = -1
+      end
+    else
+      @like_post = 0
+    end
   end
 
   # GET /posts/new
@@ -49,6 +61,29 @@ class PostsController < ApplicationController
       end
     end
   end
+
+  def like
+    if logged_in?  
+      @post = Post.find(params[:id])
+      my_like = Like.find_by(user: current_user, post: @post)
+      if !my_like
+        Like.create(like: params[:like], user: current_user, post: @post).save
+        flash[:success] = "success" 
+        redirect_to :back
+      else
+        if my_like[:like].to_s == params[:like]
+          flash[:danger] = "You can only like or dislike once"
+          redirect_to :back
+        else
+          my_like.toggle!(:like)
+          flash[:success] = "change"
+          redirect_to :back
+        end
+      end
+    else
+      redirect_to :back
+    end
+  end  
 
   # DELETE /posts/1
   # DELETE /posts/1.json

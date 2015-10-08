@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :posts
+  resources :posts do 
+    member do
+      post 'like'
+    end
+  end
   root                                  'static_pages#home'
   get 'signup'        =>        'users#new'
   get 'login'           =>         'sessions#new'

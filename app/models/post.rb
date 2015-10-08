@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
+  has_many :likes
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
@@ -12,6 +13,13 @@ class Post < ActiveRecord::Base
   validates :desc, presence: true, length: { maximum: 1000 }
   validate :picture_size
 
+  def thumbs_up_total
+    self.likes.where(like: true).size
+  end
+
+  def thumbs_down_total
+    self.likes.where(like: false).size
+  end
   private
 
   # Validates the size of an uploaded picture.

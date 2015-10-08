@@ -632,6 +632,9 @@ footer {
 }
 #wd-footer-container{color:#fff;height:60px;background-color:#ebebeb;}
 #wd-footer-container p{padding:21px 0;}
-
+.not-active {
+  pointer-events: none;
+  cursor: default;
+}
 
 
