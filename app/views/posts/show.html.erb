@@ -12,8 +12,6 @@
          <div class="panel-body">
             <%= image_tag @post.picture.url if @post.picture? %>
             </br>
-            <span><%= @post.type_post %></span>
-            </br>
             <span><%= @post.area %></span>
             </br>
             <span><%= @post.desc %></span>
@@ -26,9 +24,6 @@
             Posted <%= time_ago_in_words(@post.created_at) %> ago.
             </span>
          </div>
-<!--          <% @users.each do |user| %>
-          <%= user.user_id%>
-          <%end%> --> 
          <%= link_to @post.thumbs_up_total, '#' %>
          <% if @like_post == 1 %>
          <%= link_to like_post_path(@post, like: true), class: "not-active", method: :post do %>    

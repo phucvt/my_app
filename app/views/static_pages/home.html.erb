@@ -42,7 +42,7 @@
           <% @posts.each do |post| %>
           <tr>
             <td><%= link_to gravatar_for(post.user, size: 50), post.user %></td>
-            <td><%= post.type_post %></br>
+            <td><%= Category.find_by_id(post.category_id).name %></br>
               <%= link_to post.title, post %>
             </td>
             <td >

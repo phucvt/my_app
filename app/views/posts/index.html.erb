@@ -15,7 +15,6 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.type_post %></td>
         <td><%= link_to post.title, post %></td>
         <td >
               Posted <%= time_ago_in_words(post.created_at) %> ago.

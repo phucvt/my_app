@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  before_filter :prepare_categories
   # GET /posts
   # GET /posts.json
   def index
@@ -96,6 +96,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
@@ -104,7 +105,11 @@ class PostsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     # params[:user_id] = current_user.id
-    params.require(:post).permit( :location, :category_id, :title, :area, :price, :address, :desc, :picture, :user_id )
+    params.require(:post).permit( :location, :title, :area, :price, :address, :desc, :picture, :user_id, :category_id )
+  end
+
+  def prepare_categories
+    @categories = Category.all
   end
 end
 
