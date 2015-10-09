@@ -12,12 +12,16 @@
          <div class="panel-body">
             <%= image_tag @post.picture.url if @post.picture? %>
             </br>
+            <strong>Area</strong>
             <span><%= @post.area %></span>
             </br>
+            <strong>Description</strong>
             <span><%= @post.desc %></span>
             </br>
+            <strong>Price</strong>
             <span><%= @post.price %></span>
             </br>
+            <strong>Address</strong>
             <span><%= @post.address %></span>
             </br>
             <span class="timestamp">        
@@ -27,22 +31,22 @@
          <%= link_to @post.thumbs_up_total, '#' %>
          <% if @like_post == 1 %>
          <%= link_to like_post_path(@post, like: true), class: "not-active", method: :post do %>    
-         <i class="glyphicon glyphicon-thumbs-up"></i>
+         <i class="glyphicon glyphicon-triangle-top"></i>
          <% end %>
          <% else %> 
          <%= link_to like_post_path(@post, like: true), method: :post do %>
-         <i class="glyphicon glyphicon-thumbs-up"></i>
+         <i class="glyphicon glyphicon-triangle-top"></i>
          <% end %>
          <% end %>
          &nbsp&nbsp&nbsp&nbsp 
          <%= @post.thumbs_down_total %>
          <% if @like_post == -1 %>
          <%= link_to like_post_path(@post, like: false), class: "not-active", method: :post do %>    
-         <i class="glyphicon glyphicon-thumbs-down"></i>
+         <i class="glyphicon glyphicon-triangle-bottom"></i>
          <% end %>
          <% else %> 
          <%= link_to like_post_path(@post, like: false), method: :post do %>    
-         <i class="glyphicon glyphicon-thumbs-down"></i> 
+         <i class="glyphicon glyphicon-triangle-bottom"></i> 
          <% end %>
          <% end %>
       </div>

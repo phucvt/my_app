@@ -17,12 +17,8 @@
       </div>
       <% end %>
       <div class="field">
-         <div class="form-group">
-            <%= f.label :location, class: "col-sm-3 control-label" %>
-            <div class="col-sm-9">
-               <%= f.text_field :location, class: "form-control" , placeholder: "input location" %>
-            </div>
-         </div>
+         <%= f.label :location %>
+         <%= f.collection_select(:location_id, @locations, :id, :location_name, :include_blank => "Please select") %>
       </div>
       <div class="field">
          <%= f.label :category %>

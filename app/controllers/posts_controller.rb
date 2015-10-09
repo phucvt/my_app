@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_filter :prepare_categories
+  before_filter :prepare_locations
   # GET /posts
   # GET /posts.json
   def index
@@ -95,6 +96,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def list_post
+    if params[:q].blank?&&params[:category_id].blank?
+      @posts = Post.all
+    elsif params[:category_id].blank?   
+       @posts = Post.where("name LIKE '%#{params[:q]}%'")
+    else
+      @posts = Post.where("category_id = '#{params[:category_id]}'")
+    end
+    # @posts=@posts.paginate(:page => params[:page], :per_page  => 12)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -105,11 +117,15 @@ class PostsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     # params[:user_id] = current_user.id
-    params.require(:post).permit( :location, :title, :area, :price, :address, :desc, :picture, :user_id, :category_id )
+    params.require(:post).permit( :location_id, :title, :area, :price, :address, :desc, :picture, :user_id, :category_id )
   end
 
   def prepare_categories
     @categories = Category.all
+  end
+
+  def prepare_locations
+    @locations = Location.all
   end
 end
 

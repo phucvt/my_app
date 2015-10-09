@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+  belongs_to :location
   has_many :likes
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
@@ -21,6 +22,7 @@ class Post < ActiveRecord::Base
   def thumbs_down_total
     self.likes.where(like: false).size
   end
+  
   private
 
   # Validates the size of an uploaded picture.

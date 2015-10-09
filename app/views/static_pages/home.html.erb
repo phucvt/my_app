@@ -49,8 +49,8 @@
               Posted <%= time_ago_in_words(post.created_at) %> ago.
             </td>
             <td>     
-              <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= post.thumbs_up_total %>
-              <i class="glyphicon glyphicon-thumbs-down"></i> &nbsp <%= post.thumbs_down_total %>
+              <i class="glyphicon glyphicon-triangle-top"></i> &nbsp <%= post.thumbs_up_total %>
+              <i class="glyphicon glyphicon-thumbs-bottom"></i> &nbsp <%= post.thumbs_down_total %>
             </td>
           </tr>
           <% end %>
@@ -61,6 +61,9 @@
       </div>
     </div>
   </div>
+
+  
+
   <div class="col-md-3">
   </div>
 </div>
