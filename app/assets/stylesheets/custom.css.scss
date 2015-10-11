@@ -223,7 +223,7 @@ img {max-width:100%;height:auto;width:auto;-moz-box-sizing:border-box;-webkit-bo
 
 body{background-image: none; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; background-position: initial initial; background-repeat: initial initial; }
 
-#divLogo{margin-top: 38px; margin-bottom: 0px; margin-left: -3px;}
+#divLogo{margin-top:20px; margin-bottom: 0px; margin-left: -3px;}
 
 #divSiteTitle {font-family: Allura, cursive; color: white; font-size: 45px; text-shadow: rgba(0, 0, 0, 0.298039) 2px 4px 3px; line-height: 40px; letter-spacing: 2px; text-transform: none; font-weight: bold; font-style: normal; text-decoration: none;}
 
@@ -279,7 +279,7 @@ h1 {font-family: 'Open Sans'; font-weight: normal; font-style: normal; font-size
 
 #decorative1 {background-color: rgb(235, 235, 235); background-image: url(gray_jean.png); background-size: auto; -webkit-background-size: cover; background-repeat: repeat repeat;}
 
-#decorative2{height: 135px; background-color: #7292b0;}
+#decorative2{background-color: #7292b0;}
 
 #divFooter {font-family: 'Open Sans', sans-serif; background-color: rgb(18, 18, 18); color: rgb(180, 173, 173); padding-top: 32px; line-height: 23px; font-size: 12px; text-transform: none; background-image: url(backgrounds/noisy_net.png); background-repeat: repeat repeat;}
 
@@ -345,13 +345,19 @@ h6,.page-content h6 a {font-weight: normal; font-style: normal; font-family: 'Op
 
 .nav .dropdown-toggle:hover .caret {border-top-color:rgb(0, 0, 0);border-bottom-color:rgb(0, 0, 0);}
 
-.navbar .dropdown-menu, .dropdown-menu {background-color:rgb(255, 255, 255);border-radius:0px;}
+.navbar .dropdown-menu, .dropdown-menu {border-radius:0px;}
 
 .navbar .dropdown-menu li > a, .dropdown-menu li > a, .navbar .nav-pills .open .dropdown-toggle {color:rgb(0, 0, 0)}
 
 .navbar .dropdown-menu li > a:hover, .navbar .dropdown-menu .active > a, .navbar .dropdown-menu .active > a:hover, .dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a, .navbar .nav-pills .open a.dropdown-toggle:hover {filter:none;color:rgb(255, 255, 255);background-color:#8eb037;background-image:none}
 
-.navbar .nav-pills > li > a {margin-left:2px;margin-right:2px;padding:10px 30px;border-radius:0px;color:rgb(142, 176, 55);background-color:rgb(240, 240, 240)}
+.navbar .nav-pills > li > a {
+    margin-left:2px;
+    margin-right:2px;
+    padding:10px 30px;
+    border-radius:0px;
+    color:#FFF;
+}
 
 .navbar .nav-pills > li > a:hover, .navbar .nav li.dropdown.open.active > .dropdown-toggle, .navbar .nav-pills > li > a:focus {background-color:#A30000}
 
@@ -360,7 +366,7 @@ h6,.page-content h6 a {font-weight: normal; font-style: normal; font-family: 'Op
 .navbar .nav-pills > .active > a, .navbar .nav-pills > .active > a:hover, .navbar .nav-pills li.dropdown.open > .dropdown-toggle, .navbar .nav-pills li.dropdown.active > .dropdown-toggle {color:rgb(255, 255, 255);background-color:#8eb037;}
 
 .navbar .ddmenu {
-    margin-top:45px;margin-bottom:0px
+    margin-top:20px;  margin-bottom:0px
 
     }
 
@@ -664,3 +670,13 @@ footer {
     margin-left: 79%;
 
 }
+.bs-example{
+        margin: 20px;
+    }
+
+    #form_category{
+  border: solid #EEEEEE 1px;
+  height: 50px;
+  width: 217px;
+
+ }

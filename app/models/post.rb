@@ -22,6 +22,10 @@ class Post < ActiveRecord::Base
   def thumbs_down_total
     self.likes.where(like: false).size
   end
+
+  def self.list_categories
+    Category.all
+  end
   
   private
 

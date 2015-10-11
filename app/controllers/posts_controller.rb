@@ -86,6 +86,17 @@ class PostsController < ApplicationController
     end
   end  
 
+  def list_post
+    if params[:q].blank?&&params[:category_id].blank?
+      @posts = Post.all
+    elsif params[:category_id].blank?   
+       @posts = Post.where("name LIKE '%#{params[:q]}%'")
+    else
+      @posts = Post.where("category_id = '#{params[:category_id]}'")
+    end
+    # @dishes=@dishes.paginate(:page => params[:page], :per_page  => 12)
+  end
+
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
