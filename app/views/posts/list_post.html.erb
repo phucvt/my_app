@@ -1,12 +1,13 @@
 <% provide(:title, "Home") %>
-<div class="row">
+<%= render 'layouts/navigation' %>  
+<!-- <div class="row">
   <div class="col-md-9" >
     <div class="form-group">
       <%= form_tag '/list_post',id: "form_category",method: "get", multipart: true do %>
       <label id="label_category">Loại:</label> 
       <%= select_tag "category_id", options_from_collection_for_select(Post.list_categories, "id", "name", params[:category_id].to_i), onchange: 'this.form.submit()', id: "section_category", :include_blank => 'All categories' %>
-    </div>
     <% end %>
+    </div>
     <table class="table table-striped">
       <tbody>
         <% @posts.each do |post| %>
@@ -19,8 +20,8 @@
             Posted <%= time_ago_in_words(post.created_at) %> ago.
           </td>
           <td>     
-            <i class="glyphicon glyphicon-triangle-top"></i> &nbsp <%= post.thumbs_up_total %>
-            <i class="glyphicon glyphicon-thumbs-bottom"></i> &nbsp <%= post.thumbs_down_total %>
+            <i class="glyphicon glyphicon-triangle-top"></i> &nbsp; <%= post.thumbs_up_total %>
+            <i class="glyphicon glyphicon-thumbs-bottom"></i> &nbsp; <%= post.thumbs_down_total %>
           </td>
         </tr>
         <% end %>
@@ -32,5 +33,63 @@
       <input  name="q" type="text" size="15" placeholder="Type here..." />
       <input id="button-submit" type="submit" value="Search" />
     </form>
+  </div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_tag '/list_post',id: "form_category",method: "get", multipart: true do %>
+        <div class="form-group">
+        <div class="row">
+          <div class="col-md-1">
+            <label id="label_category" for="section_category">Loại:</label> 
+          </div>
+          <div class="col-md-2">
+            <%= select_tag "category_id", 
+              options_from_collection_for_select(Post.list_categories, "id", "name", params[:category_id].to_i),
+              onchange: 'this.form.submit()', 
+              id: "section_category", 
+              class: 'form-control',
+              :include_blank => 'All categories' %>
+          </div>
+        </div>       
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <% @posts.each do |post| %>
+        <div class="col-sm-4 col-md-3 col-lg-3">
+          <div class="thumbnail">
+            <%= image_tag post.picture.url,size:'200x100' if post.picture? %>
+            <div class="caption phucdine">
+              <h4 class="pull-right"><%= post.price %>VND</h4>
+              <h4><%= link_to post.title, post %>
+              </h4>
+              <span class="timestamp">        
+                Posted <%= time_ago_in_words(post.created_at) %> ago.
+              </span>
+            </div>
+            <div class="ratings">
+              <p class="pull-right">15 reviews</p>
+              <p>
+                <!-- <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span> -->
+                <td>     
+                  <i class="glyphicon glyphicon-triangle-top"></i> &nbsp; <%= post.thumbs_up_total %>
+                  <i class="glyphicon glyphicon-triangle-bottom"></i> &nbsp; <%= post.thumbs_down_total %>
+                </td>
+              </p>
+            </div>
+          </div>
+        </div> 
+        <% end %>    
+      </div>
+    </div>
   </div>
 </div>

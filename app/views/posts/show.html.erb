@@ -1,65 +1,87 @@
 <% provide(:title, "Post") %>
 <p id="notice"><%= notice %></p>
-<p>
-<div class="row">
-   <div class="col-md-2">
+
+<div class="container">
+  <div class="row">
+   <div class="col-md-3 post-id-image">
+      <%= link_to gravatar_for(@post.user, size: 50), @post.user %>
    </div>
-   <div class="col-md-8">
-      <div class="panel panel-danger">
-         <div class="panel-heading">
-            <h3 class="panel-title"><%= @post.title %></h3>
-         </div>
-         <div class="panel-body">
+   <div class="col-md-9 description-para">
+      <div class="col-md-12 col-lg-12 text-center">
+         <h3 class="panel-title"><%= @post.title %></h3>
+      </div>
+      <div class="row">
+         <div class="col-md-5">
             <%= image_tag @post.picture.url if @post.picture? %>
-            </br>
+         </div>
+         <div class="col-md-7">
             <strong>Area</strong>
             <span><%= @post.area %></span>
-            </br>
-            <strong>Description</strong>
-            <span><%= @post.desc %></span>
             </br>
             <strong>Price</strong>
             <span><%= @post.price %></span>
             </br>
-            <strong>Address</strong>
-            <span><%= @post.address %></span>
-            </br>
-            <span class="timestamp">        
-            Posted <%= time_ago_in_words(@post.created_at) %> ago.
-            </span>
+               <span class="timestamp">        
+               Posted <%= time_ago_in_words(@post.created_at) %> ago.
+               </span>
+               <%= link_to @post.thumbs_up_total, '#' %>
+               <% if @like_post == 1 %>
+               <%= link_to like_post_path(@post, like: true), class: "not-active", method: :post do %>    
+               <i class="glyphicon glyphicon-triangle-top"></i>
+               <% end %>
+               <% else %> 
+               <%= link_to like_post_path(@post, like: true), method: :post do %>
+               <i class="glyphicon glyphicon-triangle-top"></i>
+               <% end %>
+               <% end %>
+               &nbsp&nbsp&nbsp&nbsp 
+               <%= @post.thumbs_down_total %>
+               <% if @like_post == -1 %>
+               <%= link_to like_post_path(@post, like: false), class: "not-active", method: :post do %>    
+               <i class="glyphicon glyphicon-triangle-bottom"></i>
+               <% end %>
+               <% else %> 
+               <%= link_to like_post_path(@post, like: false), method: :post do %>    
+               <i class="glyphicon glyphicon-triangle-bottom"></i> 
+               <% end %>
+               <% end %>
          </div>
-         <%= link_to @post.thumbs_up_total, '#' %>
-         <% if @like_post == 1 %>
-         <%= link_to like_post_path(@post, like: true), class: "not-active", method: :post do %>    
-         <i class="glyphicon glyphicon-triangle-top"></i>
-         <% end %>
-         <% else %> 
-         <%= link_to like_post_path(@post, like: true), method: :post do %>
-         <i class="glyphicon glyphicon-triangle-top"></i>
-         <% end %>
-         <% end %>
-         &nbsp&nbsp&nbsp&nbsp 
-         <%= @post.thumbs_down_total %>
-         <% if @like_post == -1 %>
-         <%= link_to like_post_path(@post, like: false), class: "not-active", method: :post do %>    
-         <i class="glyphicon glyphicon-triangle-bottom"></i>
-         <% end %>
-         <% else %> 
-         <%= link_to like_post_path(@post, like: false), method: :post do %>    
-         <i class="glyphicon glyphicon-triangle-bottom"></i> 
-         <% end %>
-         <% end %>
       </div>
+      <div class="col-md-12 col-lg-12">
+        <strong>Description</strong>
+        <span><%= @post.desc %></span>
+      </div>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <div id="panel">
+            <input id="address" type="textbox" value="<%=@post.address%>">
+            <input type="button" value="Geocode" onclick="codeAddress()">
+            </div>
+            <div id="map-canvas">
+            <script type="text/javascript"> initialize(); </script>
+            </div>
+        </div>
+          </div>
+        </div>
+      </div>
+  </div>
    </div>
-   <div class="col-md-2">
-   </div>
+   <div class="col-md-12">
+        <!-- <div class="row">
+          <div class="col-md-8"> -->
+            <div id="panel">
+            <input id="address" type="textbox" value="<%=@post.address%>">
+            <input type="button" value="Geocode" onclick="codeAddress()">
+            </div>
+            <div id="map-canvas">
+            <script type="text/javascript"> initialize(); </script>
+            </div>
+        <!-- </div>
+          </div> -->
+        </div>
+      </div>
+  </div>
 </div>
 
-<div id="panel">
-      <input id="address" type="textbox" value="<%=@post.address%>">
-      <input type="button" value="Geocode" onclick="codeAddress()">
-    </div>
-    <div id="map-canvas">
-    <script type="text/javascript"> initialize(); </script>
-    </div>
-</div>
+
