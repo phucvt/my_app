@@ -1,12 +1,10 @@
 <% provide(:title, "Home") %>
-
 <%= render 'layouts/navigation' %>  
-
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
       <%= form_tag '/list_post',id: "form_category",method: "get", multipart: true do %>
-        <div class="form-group">
+      <div class="form-group">
         <div class="row">
           <div class="col-md-1">
             <label id="label_category" for="section_category">Loại:</label> 
@@ -19,9 +17,15 @@
               class: 'form-control',
               :include_blank => 'All categories' %>
           </div>
-        </div>       
-          </div>
+        </div>
+      </div>
       <% end %>
+    </div>
+    <div class="col-md-3">
+      <form  method="get" action="/list_post">
+        <input  name="q" type="text" size="15" placeholder="Type here..." />
+        <input id="button-submit" type="submit" value="Search" />
+      </form>
     </div>
   </div>
   <div class="row">
@@ -36,25 +40,25 @@
               <h4><%= link_to post.title, post %>
               </h4>
               <span class="timestamp">        
-                Posted <%= time_ago_in_words(post.created_at) %> ago.
+              Posted <%= time_ago_in_words(post.created_at) %> ago.
               </span>
             </div>
             <div class="ratings">
-              <p class="pull-right">15 reviews</p>
+              <p class="pull-right"><%= post.review_total %> Reviews</p>
               <p>
                 <!-- <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star-empty"></span> -->
-                <td>     
-                  <i class="glyphicon glyphicon-triangle-top"></i> &nbsp; <%= post.thumbs_up_total %>
-                  <i class="glyphicon glyphicon-triangle-bottom"></i> &nbsp; <%= post.thumbs_down_total %>
-                </td>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star-empty"></span> -->
+              <td>     
+                <i class="glyphicon glyphicon-triangle-top"></i> &nbsp; <%= post.thumbs_up_total %>
+                <i class="glyphicon glyphicon-triangle-bottom"></i> &nbsp; <%= post.thumbs_down_total %>
+              </td>
               </p>
             </div>
           </div>
-        </div> 
+        </div>
         <% end %>    
       </div>
       <%= will_paginate @posts %>  

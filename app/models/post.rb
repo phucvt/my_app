@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :location
   has_many :likes
+  has_many :commends
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
   validates :user_id, presence: true
@@ -21,6 +22,10 @@ class Post < ActiveRecord::Base
 
   def thumbs_down_total
     self.likes.where(like: false).size
+  end
+
+  def review_total
+    self.commends.size
   end
 
   def self.list_categories

@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
   
+  get 'commends/create'
+
+  get 'commends/destroy'
+
   resources :locations
   resources :categories
   resources :posts do 
+    resources :commends
+    get :show
     member do
       post 'like'
+      get 'like'
     end
   end
   root                                  'static_pages#home'
@@ -13,7 +20,7 @@ Rails.application.routes.draw do
   post 'login'          =>         'sessions#create'
   delete 'logout'     =>        'sessions#destroy'
   resources :users
-  get 'list_post' => 'posts#list_post'
+  get 'list_post', to: 'posts#list_post'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -90,7 +90,7 @@ class PostsController < ApplicationController
     if params[:q].blank?&&params[:category_id].blank?
       @posts = Post.all
     elsif params[:category_id].blank?   
-       @posts = Post.where("name LIKE '%#{params[:q]}%'")
+       @posts = Post.where("title LIKE '%#{params[:q]}%'")
     else
       @posts = Post.where("category_id = '#{params[:category_id]}'")
     end
@@ -111,7 +111,7 @@ class PostsController < ApplicationController
     if params[:q].blank?&&params[:category_id].blank?
       @posts = Post.all
     elsif params[:category_id].blank?   
-       @posts = Post.where("name LIKE '%#{params[:q]}%'")
+       @posts = Post.where("title LIKE '%#{params[:q]}%'")
     else
       @posts = Post.where("category_id = '#{params[:category_id]}'")
     end

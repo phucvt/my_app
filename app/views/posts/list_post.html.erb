@@ -1,40 +1,6 @@
 <% provide(:title, "Home") %>
 <%= render 'layouts/navigation' %>  
-<!-- <div class="row">
-  <div class="col-md-9" >
-    <div class="form-group">
-      <%= form_tag '/list_post',id: "form_category",method: "get", multipart: true do %>
-      <label id="label_category">Loại:</label> 
-      <%= select_tag "category_id", options_from_collection_for_select(Post.list_categories, "id", "name", params[:category_id].to_i), onchange: 'this.form.submit()', id: "section_category", :include_blank => 'All categories' %>
-    <% end %>
-    </div>
-    <table class="table table-striped">
-      <tbody>
-        <% @posts.each do |post| %>
-        <tr>
-          <td><%= link_to gravatar_for(post.user, size: 50), post.user %></td>
-          <td><%= Category.find_by_id(post.category_id).name %></br>
-            <%= link_to post.title, post %>
-          </td>
-          <td >
-            Posted <%= time_ago_in_words(post.created_at) %> ago.
-          </td>
-          <td>     
-            <i class="glyphicon glyphicon-triangle-top"></i> &nbsp; <%= post.thumbs_up_total %>
-            <i class="glyphicon glyphicon-thumbs-bottom"></i> &nbsp; <%= post.thumbs_down_total %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="col-md-3" >
-    <form  method="get" action="/list_dish">
-      <input  name="q" type="text" size="15" placeholder="Type here..." />
-      <input id="button-submit" type="submit" value="Search" />
-    </form>
-  </div>
-</div> -->
+
 <div class="container">
   <div class="row">
     <div class="col-md-12">
