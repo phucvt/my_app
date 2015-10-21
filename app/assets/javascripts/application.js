@@ -11,4 +11,20 @@
 // about supported directives.
 //
 //= require google-map.js
-
+///= require jquery.js
+$(function() {
+  $("#posts th a, #posts .pagination a").live("click", function() {
+    $.getScript(this.href)
+    return false;
+  });
+  $("#posts_search").submit(function() {
+    $.get(this.action, $(this).serialize(), null, "script");
+    return false;
+  });
+});
+// $(function() {
+//   $("#posts_search input").keyup(function() {
+//     $.get($("#posts_search").attr("action"), $("#posts_search").serialize(), null, "script");
+//     return false;
+//   });
+// });

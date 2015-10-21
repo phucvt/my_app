@@ -5,7 +5,13 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.sort_by{|likes| likes.thumbs_up_total}
+    @posts = Post.search(params[:search], params[:min_price], params[:max_price]).paginate(:page => params[:page], :per_page => 12 )
+    @categories = Category.all
+    # @posts = Post.search(params[:search])
+    # @posts = Post.all
+    # @posts = @posts.where(["title LIKE ?", "%#{search}%"]) if search.present?
+    # @posts = @posts.where(["price >= ?", "%#{min_price}%"]) if min_price.present?
+    # return @posts
   end
 
   # GET /posts/1
@@ -87,14 +93,18 @@ class PostsController < ApplicationController
   end  
 
   def list_post
-    if params[:q].blank?&&params[:category_id].blank?
-      @posts = Post.all
-    elsif params[:category_id].blank?   
-       @posts = Post.where("title LIKE '%#{params[:q]}%'")
-    else
-      @posts = Post.where("category_id = '#{params[:category_id]}'")
-    end
+    # if params[:search].blank?&&params[:category_id].blank?
+    #   @posts = Post.all
+    # elsif params[:category_id].blank?   
+    #    @posts = Post.where("title LIKE '%#{params[:search]}%'")
+    # else
+    #   @posts = Post.where("category_id = '#{params[:category_id]}'")
+    # end
     # @dishes=@dishes.paginate(:page => params[:page], :per_page  => 12)
+    # @posts = Post.all
+    # @posts = @posts.where(["title LIKE ?", "%#{search}%"]) if search.present?
+    # @posts = @posts.where(["price >= ?", "%#{min_price}%"]) if min_price.present?
+    # return @posts
   end
 
   # DELETE /posts/1
@@ -105,17 +115,6 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def list_post
-    if params[:q].blank?&&params[:category_id].blank?
-      @posts = Post.all
-    elsif params[:category_id].blank?   
-       @posts = Post.where("title LIKE '%#{params[:q]}%'")
-    else
-      @posts = Post.where("category_id = '#{params[:category_id]}'")
-    end
-    # @posts=@posts.paginate(:page => params[:page], :per_page  => 12)
   end
 
   private
@@ -129,6 +128,9 @@ class PostsController < ApplicationController
   def post_params
     # params[:user_id] = current_user.id
     params.require(:post).permit( :location_id, :title, :area, :price, :address, :desc, :picture, :user_id, :category_id )
+  end
+
+  def search_params
   end
 
   def prepare_categories

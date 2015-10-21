@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'commends/destroy'
 
+  resources :searches
   resources :locations
   resources :categories
   resources :posts do 
@@ -14,11 +15,11 @@ Rails.application.routes.draw do
       get 'like'
     end
   end
-  root                                  'static_pages#home'
+  root                                  'posts#index'
   get 'signup'        =>        'users#new'
   get 'login'           =>         'sessions#new'
   post 'login'          =>         'sessions#create'
-  delete 'logout'     =>        'sessions#destroy'
+  get 'logout'     =>        'sessions#destroy'
   resources :users
   get 'list_post', to: 'posts#list_post'
   # The priority is based upon order of creation: first created -> highest priority.

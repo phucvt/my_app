@@ -31,6 +31,24 @@ class Post < ActiveRecord::Base
   def self.list_categories
     Category.all
   end
+
+  def self.search(search, min_price, max_price)
+    @posts = Post.all
+
+    if search == nil
+      search = ''
+    end
+    # binding.pry
+    if min_price == nil
+      min_price = 0
+    end
+    if max_price == nil
+      max_price = 1_000_000_000_000
+    end
+    @posts = @posts.where(["title LIKE ?", "%#{search}%"]) if search != nil
+    @posts = @posts.where(["price <= ?", max_price]) if max_price != nil
+    @posts = @posts.where(["price >= ?", min_price]) if min_price != nil
+end
   
   private
 

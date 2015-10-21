@@ -4,8 +4,8 @@ class CommendsController < ApplicationController
     @post = Post.find(params[:post_id])
     @review = @post.commends.create(user_id: current_user.id, review: review_params[:review] )
     respond_to do |format|
-      format.html { redirect_to @post }
-      format.js 
+      format.html 
+      format.js
     end
   end
 
@@ -13,7 +13,7 @@ class CommendsController < ApplicationController
     @post = Post.find(params[:post_id])
     @review = commend.find(parmas[:id])
     respond_to do |format|
-      format.html { redirect_to @post }
+      format.html
       format.js 
     end
     @review.destroy

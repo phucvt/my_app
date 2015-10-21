@@ -5,6 +5,7 @@
     <div class="col-md-3 post-id-image">
       <%= link_to gravatar_for(@post.user, size: 50), @post.user %>
       <%= @post.user.name %>
+      <%= @post.user.phone %>
     </div>
     <div class="col-md-9 description-para">
       <div class="col-md-12 col-lg-12 text-center">
@@ -15,21 +16,25 @@
           <%= image_tag @post.picture.url if @post.picture? %>
         </div>
         <div class="col-md-7">
-          <strong>Loai</strong>
+          <strong>Loại phòng</strong>
           <span><%= Category.find_by_id(@post.category_id).name %></span>
           </br>
-          <strong>Khu vuc</strong>
+          <strong>Khu vực</strong>
           <span><%= Location.find_by_id(@post.location_id).location_name %></span>
           </br>
-          <strong>Area</strong>
+          <strong>Diện tích</strong>
           <span><%= @post.area %></span>
           </br>
-          <strong>Price</strong>
+          <strong>Giá</strong>
           <span><%= @post.price %>VND</span>
           </br>
+          <strong>Mô tả</strong>
+          <span><%= @post.desc %></span>
+          </br>
           <span class="timestamp">        
-          Posted <%= time_ago_in_words(@post.created_at) %> ago.
+          Thời gian đăng <%= time_ago_in_words(@post.created_at) %> trước.
           </span>
+          </br>
           <%= link_to @post.thumbs_up_total, '#' %>
           <% if @like_post == 1 %>
           <%= link_to like_post_path(@post, like: true), class: "not-active", method: :post do %>    
@@ -53,49 +58,29 @@
           <% end %>
         </div>
       </div>
-
-      <div class="col-md-12 col-lg-12">
-        <strong>Description</strong>
-        <span><%= @post.desc %></span>
-      </div>
-      <div id="reviews">
-        <% comments = @post.commends.all %>
-          <% comments.each do |comment| %>
-          <strong><%= User.find_by_id(comment.user_id).name %>: </strong>
-            <%= comment.review %>
-          <br>
-        <% end %><%= render 'commends/commend' %>
+      <div id="reviews">   
+        <%= render 'commends/commend' %>
       </div>
       <div class="col-md-12 col-lg-12">
         <div id="comment">
-          <%= form_for([@post, @post.commends.build], remote: true ) do |f| %>
+          <%= form_for([@post, @post.commends.build], remote: true) do |f| %>
           <p>
             <br>
             <%= f.text_area :review, id: 'textarea_review'%>
           </p>
           <p>
-            <%= f.submit "Create review", id: "botton", class: "btn btn-success green" %>
+            <%= f.submit "Nhận xét", id: "botton", class: "btn btn-success green" %>
           </p>
           <% end %>
         </div>
       </div>
-
       <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-offset-2 col-md-8">
-            <div id="panel">
-              <input id="address" type="textbox" value="<%=@post.address%>">
-              <input type="button" value="Geocode" onclick="codeAddress()">
-            </div>
-            <div id="map-canvas">
-              <script type="text/javascript"> initialize(); </script>
-            </div>
-          </div>
+        <strong>Địa chỉ</strong>
+        <span><%=@post.address%></span>      
+        <div id="map-canvas">
+          <script type="text/javascript"> initialize(); </script>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-</div>
 </div>
